@@ -5,15 +5,19 @@
 	<persistence-unit name="SistemaPU" transaction-type="RESOURCE_LOCAL">
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
 		<properties>
+			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQLInnoDBDialect" />
+			<property name="hibernate.connection.useUnicode" value="true" />
+			<property name="hibernate.connection.characterEncoding"
+				value="UTF-8" />
 			<property name="hibernate.show_sql" value="true" />
 			<property name="hibernate.format_sql" value="true" />
 			<property name="hibernate.cache.provider_class" value="org.hibernate.cache.NoCacheProvider" />
 			<property name="hibernate.connection.username" value="sql217259" />
 			<property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver" />
+
 			<property name="hibernate.connection.password" value="dE1%xT9!" />
 			<property name="hibernate.connection.url"
-				value="jdbc:mysql://sql2.freesqldatabase.com/sql217259" />
-			<property name="hibernate.hbm2ddl.auto" value="update" />
+				value="jdbc:mysql://sql2.freesqldatabase.com:3306/sql217259" />
 			<property name="hibernate.hbm2ddl.auto" value="update" />
 		</properties>
 	</persistence-unit>

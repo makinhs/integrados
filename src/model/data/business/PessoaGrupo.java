@@ -9,8 +9,6 @@ import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-@Entity
-@Table(name = "tbl_pessoa_grupo")
 public class PessoaGrupo implements Serializable {
 
 	private static final long serialVersionUID = 1L;

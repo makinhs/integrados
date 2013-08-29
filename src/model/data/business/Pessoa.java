@@ -27,31 +27,31 @@ public class Pessoa implements Serializable {
 	@Column(name = "nome", length = 60, nullable = false)
 	private String nome;
 
-	@Column(name = "endereco_rua", length = 40)
+	@Column(name = "endereco_rua")
 	private String enderecoRua;
 
-	@Column(name = "endereco_numero", length = 4)
+	@Column(name = "endereco_numero")
 	private Integer enderecoNumero;
 
-	@Column(name = "endereco_complemento", length = 4)
+	@Column(name = "endereco_complemento")
 	private String enderecoComplemento;
 
-	@Column(name = "endereco_bairro", length = 20)
+	@Column(name = "endereco_bairro")
 	private String enderecoBairro;
 
-	@Column(name = "endereco_cidade", length = 30)
+	@Column(name = "endereco_cidade")
 	private String enderecoCidade;
 
 	@Column(name = "endereco_uf", length = 2)
 	private String enderecoUf;
 
-	@Column(name = "endereco_cep", length = 5)
+	@Column(name = "endereco_cep", length = 8)
 	private String enderecoCep;
 
 	@Column(name = "telefone", length = 11)
 	private String telefone;
 
-	@Column(name = "email", length = 5, unique = true, nullable = false)
+	@Column(name = "email", length = 50, unique = true, nullable = false)
 	private String email;
 
 	@Column(name = "senha", length = 16, nullable = false)
