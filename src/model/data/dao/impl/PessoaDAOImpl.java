@@ -14,48 +14,61 @@ public class PessoaDAOImpl implements PessoaDAO {
         this.em = em;
     }
 
-    @Override
-    public Pessoa findByCpf(String cpf) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+	@Override
+	public List<Pessoa> findAll() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
-    @Override
-    public List<Pessoa> findByNome(String nome) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+	@Override
+	public Pessoa findById(Long id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
-    @Override
-    public List<Pessoa> findByGrupo(Grupo grupo) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+	@Override
+	public Pessoa save(Pessoa entidade) {
+		Pessoa p = em.merge(entidade);
+		em.getTransaction().begin();
+		em.getTransaction().commit();
+		return p;
+	}
 
-    @Override
-    public void deleteByCpf(String cpf) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+	@Override
+	public void delete(Pessoa entidade) {
+		// TODO Auto-generated method stub
+		
+	}
 
-    @Override
-    public void deleteByGrupo(Grupo grupo) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+	@Override
+	public Pessoa findByCpf(String cpf) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
-    @Override
-    public List findAll() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+	@Override
+	public List<Pessoa> findByNome(String nome) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
-    @Override
-    public Object findById(Long id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+	@Override
+	public List<Pessoa> findByGrupo(Grupo grupo) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
-    @Override
-    public Object save(Object entidade) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+	@Override
+	public void deleteByCpf(String cpf) {
+		// TODO Auto-generated method stub
+		
+	}
 
-    @Override
-    public void delete(Object entidade) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+	@Override
+	public void deleteByGrupo(Grupo grupo) {
+		// TODO Auto-generated method stub
+		
+	}
+
+   
 }

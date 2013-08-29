@@ -1,7 +1,7 @@
 package model.business;
 
-import model.data.business.Pessoa;
 import model.data.PessoaService;
+import model.data.business.Pessoa;
 
 public class PessoaBo {
 
@@ -11,12 +11,16 @@ public class PessoaBo {
         pessoaService = new PessoaService();
     }
 
-    public boolean isValidPessoa(Pessoa pessoa) {
-        return true;
-    }
+   
 
     public void realizarCadastroCliente(Pessoa pessoa) {
         if (isValidPessoa(pessoa)) {
         }
     }
+    
+    private boolean isValidPessoa(Pessoa pessoa) {
+        return true;
+    }
+    
+    
 }
