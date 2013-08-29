@@ -1,10 +1,15 @@
 package model.data.dao.impl;
 
 import java.util.List;
+
 import javax.persistence.EntityManager;
-import model.data.dao.PessoaDAO;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
+
 import model.data.business.Grupo;
 import model.data.business.Pessoa;
+import model.data.dao.PessoaDAO;
 
 public class PessoaDAOImpl implements PessoaDAO {
 
@@ -16,8 +21,12 @@ public class PessoaDAOImpl implements PessoaDAO {
 
 	@Override
 	public List<Pessoa> findAll() {
-		// TODO Auto-generated method stub
-		return null;
+		CriteriaBuilder cb = em.getCriteriaBuilder();
+        CriteriaQuery<Pessoa> cq = cb.createQuery(Pessoa.class);
+        Root<Pessoa> rt = cq.from(Pessoa.class);
+        cq.select(rt);
+        
+        return em.createQuery(cq).getResultList();
 	}
 
 	@Override

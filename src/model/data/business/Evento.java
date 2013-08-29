@@ -4,107 +4,137 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.List;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "tbl_evento")
 public class Evento implements Serializable {
 
-    private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1L;
 
-    private Long eventoId;
-    private String nome;
-    private String descricao;
-    private Integer numeroParticipantes;
-    private BigDecimal preco;
-    private String localRua;
-    private String localBairro;
-    private Integer localNumero;
-    private String localCidade;
-    private String localUf;
-    private List<EventoData> listaHorarios;
+	@Id
+	@GeneratedValue
+	@Column(name = "id_evento")
+	private Long eventoId;
 
-    public Long getEventoId() {
-        return eventoId;
-    }
+	@ManyToMany
+	@JoinTable(name = "tbl_evento_data", 
+	joinColumns = @JoinColumn(name = "id_evento"), 
+	inverseJoinColumns = @JoinColumn(name = "id_data"))
+	private List<Data> listaHorarios;
 
-    public void setEventoId(Long eventoId) {
-        this.eventoId = eventoId;
-    }
+	@Column(name="nome", length=50)
+	private String nome;
+	
+	@Column(name="descricao", length=255)
+	private String descricao;
+	
+	@Column(name="num_participantes")
+	private Integer numeroParticipantes;
+	
+	@Column(name="preco")
+	private BigDecimal preco;
+	
+	@Column(name="local_rua")
+	private String localRua;
+	
+	@Column(name="local_bairro")
+	private String localBairro;
+	
+	@Column(name="local_numero")
+	private Integer localNumero;
+	
+	@Column(name="local_cidade")
+	private String localCidade;
+	
+	@Column(name="local_uf", length=2)
+	private String localUf;
 
-    public String getNome() {
-        return nome;
-    }
+	public Long getEventoId() {
+		return eventoId;
+	}
 
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
+	public void setEventoId(Long eventoId) {
+		this.eventoId = eventoId;
+	}
 
-    public String getDescricao() {
-        return descricao;
-    }
+	public String getNome() {
+		return nome;
+	}
 
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
-    }
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
 
-    public Integer getNumeroParticipantes() {
-        return numeroParticipantes;
-    }
+	public String getDescricao() {
+		return descricao;
+	}
 
-    public void setNumeroParticipantes(Integer numeroParticipantes) {
-        this.numeroParticipantes = numeroParticipantes;
-    }
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
+	}
 
-    public BigDecimal getPreco() {
-        return preco;
-    }
+	public Integer getNumeroParticipantes() {
+		return numeroParticipantes;
+	}
 
-    public void setPreco(BigDecimal preco) {
-        this.preco = preco;
-    }
+	public void setNumeroParticipantes(Integer numeroParticipantes) {
+		this.numeroParticipantes = numeroParticipantes;
+	}
 
-    public String getLocalRua() {
-        return localRua;
-    }
+	public BigDecimal getPreco() {
+		return preco;
+	}
 
-    public void setLocalRua(String localRua) {
-        this.localRua = localRua;
-    }
+	public void setPreco(BigDecimal preco) {
+		this.preco = preco;
+	}
 
-    public String getLocalBairro() {
-        return localBairro;
-    }
+	public String getLocalRua() {
+		return localRua;
+	}
 
-    public void setLocalBairro(String localBairro) {
-        this.localBairro = localBairro;
-    }
+	public void setLocalRua(String localRua) {
+		this.localRua = localRua;
+	}
 
-    public Integer getLocalNumero() {
-        return localNumero;
-    }
+	public String getLocalBairro() {
+		return localBairro;
+	}
 
-    public void setLocalNumero(Integer localNumero) {
-        this.localNumero = localNumero;
-    }
+	public void setLocalBairro(String localBairro) {
+		this.localBairro = localBairro;
+	}
 
-    public String getLocalCidade() {
-        return localCidade;
-    }
+	public Integer getLocalNumero() {
+		return localNumero;
+	}
 
-    public void setLocalCidade(String localCidade) {
-        this.localCidade = localCidade;
-    }
+	public void setLocalNumero(Integer localNumero) {
+		this.localNumero = localNumero;
+	}
 
-    public String getLocalUf() {
-        return localUf;
-    }
+	public String getLocalCidade() {
+		return localCidade;
+	}
 
-    public void setLocalUf(String localUf) {
-        this.localUf = localUf;
-    }
+	public void setLocalCidade(String localCidade) {
+		this.localCidade = localCidade;
+	}
 
-    public List<EventoData> getListaHorarios() {
-        return listaHorarios;
-    }
+	public String getLocalUf() {
+		return localUf;
+	}
 
-    public void setListaHorarios(List<EventoData> listaHorarios) {
-        this.listaHorarios = listaHorarios;
-    }
+	public void setLocalUf(String localUf) {
+		this.localUf = localUf;
+	}
+
 }
