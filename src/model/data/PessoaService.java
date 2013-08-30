@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import javax.persistence.EntityManager;
 
+import model.data.business.Grupo;
 import model.data.business.Pessoa;
 import model.data.dao.PessoaDAO;
 import model.data.dao.impl.PessoaDAOImpl;
@@ -14,38 +15,84 @@ import org.slf4j.LoggerFactory;
 
 public class PessoaService extends JpaController {
 
-	private EntityManager em = null;
-	private final Logger log = LoggerFactory.getLogger(PessoaService.class);
-	private PessoaDAO pessoaDAO;
+    private EntityManager em = null;
+    private final Logger log = LoggerFactory.getLogger(PessoaService.class);
+    private PessoaDAO pessoaDAO;
 
-	public PessoaService() {
-		em = this.getEntityManager();
-		pessoaDAO = new PessoaDAOImpl(em);
-	}
+    public PessoaService() {
+        em = this.getEntityManager();
+        pessoaDAO = new PessoaDAOImpl(em);
+    }
 
-	public ArrayList<Pessoa> findAll() {
-		try {
-			ArrayList<Pessoa> list = (ArrayList<Pessoa>) pessoaDAO.findAll();
-			return list;
-		} catch (Exception e) {
-			log.error(e.getMessage());
-			return null;
-		}
-	}
+    public ArrayList<Pessoa> findAll() {
+        try {
+            ArrayList<Pessoa> list = (ArrayList<Pessoa>) pessoaDAO.findAll();
+            return list;
+        } catch (Exception e) {
+            log.error(e.getMessage());
+            return null;
+        }
+    }
 
-	public void savePessoa(Pessoa pessoa) {
-		try {
-			pessoaDAO.save(pessoa);
-		} catch (Exception e) {
-			log.error(e.getMessage());
-		}
-	}
+    public void savePessoa(Pessoa pessoa) {
+        try {
+            pessoaDAO.save(pessoa);
+        } catch (Exception e) {
+            log.error(e.getMessage());
+        }
+    }
 
-	public void deleteByCpf(String cpf) {
-		try {
-			pessoaDAO.deleteByCpf(cpf);
-		} catch (Exception e) {
-			log.error(e.getMessage());
-		}
-	}
+    public void delete(Pessoa pessoa) {
+        try {
+            pessoaDAO.delete(pessoa);
+        } catch (Exception e) {
+            log.error(e.getMessage());
+        }
+    }
+
+    public Pessoa findByCpf(String cpf) {
+        try {
+            Pessoa p = pessoaDAO.findByCpf(cpf);
+            return p;
+        } catch (Exception e) {
+            log.error(e.getMessage());
+            return null;
+        }
+    }
+
+    public ArrayList<Pessoa> findByNome(String nome) {
+        try {
+            ArrayList<Pessoa> list = (ArrayList<Pessoa>) pessoaDAO.findByNome(nome);
+            return list;
+        } catch (Exception e) {
+            log.error(e.getMessage());
+            return null;
+        }
+    }
+
+    public ArrayList<Pessoa> findByGrupo(Grupo grupo) {
+        try {
+            ArrayList<Pessoa> list = (ArrayList<Pessoa>) pessoaDAO.findByGrupo(grupo);
+            return list;
+        } catch (Exception e) {
+            log.error(e.getMessage());
+            return null;
+        }
+    }
+
+    public void deleteByCpf(String cpf) {
+        try {
+            pessoaDAO.deleteByCpf(cpf);
+        } catch (Exception e) {
+            log.error(e.getMessage());
+        }
+    }
+
+    public void deletebyGrupo(Grupo grupo) {
+        try {
+            pessoaDAO.deleteByGrupo(grupo);
+        } catch (Exception e) {
+            log.error(e.getMessage());
+        }
+    }
 }
