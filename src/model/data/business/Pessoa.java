@@ -1,13 +1,18 @@
 package model.data.business;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -60,6 +65,9 @@ public class Pessoa implements Serializable {
 	@ManyToOne
 	@JoinColumn(name="id_grupo")
 	private Grupo grupo;
+	
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "pk.pessoa", cascade = CascadeType.ALL)
+	private List<PessoaEvento> listaPessoaEvento = new ArrayList<PessoaEvento>();
 
 	public Long getPessoaId() {
 		return pessoaId;
@@ -172,6 +180,14 @@ public class Pessoa implements Serializable {
 	public void setGrupo(Grupo grupo) {
 		this.grupo = grupo;
 	}
+
+    public List<PessoaEvento> getListaPessoaEvento() {
+        return listaPessoaEvento;
+    }
+
+    public void setListaPessoaEvento(List<PessoaEvento> listaPessoaEvento) {
+        this.listaPessoaEvento = listaPessoaEvento;
+    }
 	
 //	@OneToOne
 //	@JoinColumn(name = "id_pessoa_grupo")

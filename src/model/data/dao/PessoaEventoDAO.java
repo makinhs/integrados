@@ -1,6 +1,8 @@
 package model.data.dao;
 
 import model.data.business.Permissao;
+import model.data.business.PessoaEvento;
+
 import java.util.List;
 import model.data.business.Evento;
 import model.data.dao.BaseDAO;
@@ -12,5 +14,5 @@ public interface PessoaEventoDAO extends BaseDAO<PessoaEvento> {
 
     public List<Evento> listEventoOfPessoa(Pessoa pessoa);
 
-    public List<Pessoa> findByPermissao(Permissao permissao);
+    public List<Permissao> findByPermissao(Permissao permissao);
 }

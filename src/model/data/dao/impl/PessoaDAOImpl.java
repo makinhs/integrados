@@ -7,6 +7,7 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 
+import model.data.business.Evento;
 import model.data.business.Grupo;
 import model.data.business.Pessoa;
 import model.data.dao.PessoaDAO;
@@ -41,16 +42,16 @@ public class PessoaDAOImpl implements PessoaDAO {
 
     @Override
     public Pessoa save(Pessoa entidade) {
-        Pessoa p = em.merge(entidade);
         em.getTransaction().begin();
+        Pessoa p = em.merge(entidade);
         em.getTransaction().commit();
         return p;
     }
 
     @Override
     public void delete(Pessoa entidade) {
-        em.remove(entidade);
         em.getTransaction().begin();
+        em.remove(entidade);
         em.getTransaction().commit();
     }
 
@@ -88,8 +89,8 @@ public class PessoaDAOImpl implements PessoaDAO {
         Root<Pessoa> rt = cq.from(Pessoa.class);
         cq.where(cb.equal(rt.get(CPF), cpf));
         Pessoa p = em.createQuery(cq).getSingleResult();
-        em.remove(p);
         em.getTransaction().begin();
+        em.remove(p);
         em.getTransaction().commit();
     }
 
@@ -101,10 +102,10 @@ public class PessoaDAOImpl implements PessoaDAO {
         cq.where(cb.equal(rt.get(GRUPO), grupo));
         List<Pessoa> list = em.createQuery(cq).getResultList();
 
+        em.getTransaction().begin();
         for (Pessoa p : list) {
             em.remove(p);
         }
-        em.getTransaction().begin();
         em.getTransaction().commit();
     }
 
